@@ -1,6 +1,7 @@
 # Analiza podatkov s programom R, 2017/18
 
-Avtor: matija Gubanec Hančič
+Avtor: Matija Gubanec Hančič
+
 Repozitorij z gradivi pri predmetu APPR v študijskem letu 2017/18
 
 ## Tematika
