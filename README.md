@@ -27,14 +27,50 @@ http://ec.europa.eu/eurostat/data/database
 
 http://appsso.eurostat.ec.europa.eu/nui/submitViewTableAction.do
 
-
-
-
 V tretji fazi bom dodal zemljevid sveta, na katerem bodo označene največje uvoznice in izvoznice nafte.
 
 Projekt bo vseboval  VSTAVI tabele:
-1. 
 
+1. tabela:
+
+  - Leto (dan)
+  
+  - Cena nafte
+  
+2. tabela:
+  
+  - Leto
+  
+  - Valute
+  
+  - Vrednost valute(upoštevajoč inflacijo...)
+  
+3. tabela:
+
+  - Leto
+  
+  - Država
+  
+  - BDP
+
+4. tabela:
+
+  - Leto
+  
+  - Država
+  
+  - Uvoz
+
+5. tabela:
+
+  - Leto
+  
+  - Država
+  
+  - Izvoz
+  
+
+S pomočjo svoje analize bom poskusil napovedati prihodnje gibanje naftnih cen in valut.
 
 ## Program
 
