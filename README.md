@@ -39,33 +39,25 @@ Projekt bo vseboval  VSTAVI tabele:
 2. tabela:
   
   - Leto
-  
   - Valute
-  
   - Vrednost valute(upoštevajoč inflacijo...)
   
 3. tabela:
 
   - Leto
-  
   - Država
-  
   - BDP
 
 4. tabela:
 
-  - Leto
-  
+  - Leto 
   - Država
-  
   - Uvoz
 
 5. tabela:
 
   - Leto
-  
   - Država
-  
   - Izvoz
   
 
