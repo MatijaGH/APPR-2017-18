@@ -34,7 +34,6 @@ Projekt bo vseboval  VSTAVI tabele:
 1. tabela:
 
   - Leto (dan)
-  
   - Cena nafte
   
 2. tabela:
