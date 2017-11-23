@@ -14,9 +14,7 @@ Za izbrane evropske države bom preučil vpliv cen nafte na gibanje povpraševan
 
 V tretji fazi bom dodal zemljevid sveta, na katerem bodo označene največje uvoznice in izvoznice nafte.
 
-Projekt bo vseboval 5 tabel:
-
-## TABELE
+## Zasnova podatkovnega modela
 
  Tabela 1:  Cene nafte skozi leta
 
