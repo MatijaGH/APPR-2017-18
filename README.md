@@ -1,4 +1,4 @@
-# Analiza podatkov s programom R, 2017/18
+# Analiza vpliva cen nafte na svetovno gospodarstvo
 
 Avtor: Matija Gubanec Hančič
 
