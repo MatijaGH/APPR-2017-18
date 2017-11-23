@@ -8,9 +8,9 @@ Repozitorij z gradivi pri predmetu APPR v študijskem letu 2017/18
 
 V svojem projektu se bom osredotočil na cene naftnih derivatov in vpliv le teh na 
 vrednosti dolarja in valut ostalih držav, ki so močno odvisne od trgovanja z nafto v obdobju od leta 2003 do danes.
-Prav tako bom proučil vpliv cen naft na uvoz in izvoz ter BDP teh držav.
+Prav tako bom preučil vpliv cen nafte na uvoz in izvoz ter BDP teh držav.
 
-Za izbrane evropske države bom prav tako preučil vpliv cen nafte na gibanje povpraševanja po naftnih dobrinah.
+Za izbrane evropske države bom preučil vpliv cen nafte na gibanje povpraševanja po naftnih dobrinah.
 
 V tretji fazi bom dodal zemljevid sveta, na katerem bodo označene največje uvoznice in izvoznice nafte.
 
@@ -53,7 +53,8 @@ Stolpci:
 * Izvoz
   
 
-S pomočjo svoje analize bom poskusil napovedati prihodnje gibanje naftnih cen in valut.
+S pomočjo svoje analize bom poskusil napovedati prihodnje gibanje naftnih cen in valut ter prikazati gibanje
+le teh v preteklosti.
 
 ### Viri:
 
