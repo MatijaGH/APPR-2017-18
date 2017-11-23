@@ -18,34 +18,34 @@ Projekt bo vseboval 5 tabel:
 
 ## TABELE
 
-### Tabela 1: :
+ Tabela 1: :
 
 Stolpci:
 * Leto (dan)
 * Cena nafte
   
-### Tabela 2:
+ Tabela 2:
 
 Stolpci:
 * Leto
 * Valute
 * Vrednost valute(upoštevajoč inflacijo...)
   
-### Tabela 3:
+ Tabela 3:
 
 Stolpci:
 * Leto
 * Država
 * BDP
 
-### Tabela 4:
+ Tabela 4:
 
 Stolpci:
 * Leto 
 * Država
 * Uvoz
 
-### Tabela 5:
+ Tabela 5:
 
 Stolpci:
 * Leto
