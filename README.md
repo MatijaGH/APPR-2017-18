@@ -43,30 +43,30 @@ Stolpci:
 ### Tabela 2:
 
 Stolpci:
-*Leto
-*Valute
-*Vrednost valute(upoštevajoč inflacijo...)
+* Leto
+* Valute
+* Vrednost valute(upoštevajoč inflacijo...)
   
 ### Tabela 3:
 
 Stolpci:
-*Leto
-*Država
-*BDP
+* Leto
+* Država
+* BDP
 
 ### Tabela 4:
 
 Stolpci:
-*Leto 
-*Država
-*Uvoz
+* Leto 
+* Država
+* Uvoz
 
 ### Tabela 5:
 
 Stolpci:
-*Leto
-*Država
-*Izvoz
+* Leto
+* Država
+* Izvoz
   
 
 S pomočjo svoje analize bom poskusil napovedati prihodnje gibanje naftnih cen in valut.
