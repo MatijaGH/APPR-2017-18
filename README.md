@@ -71,6 +71,10 @@ http://www.opec.org/opec_web/en/index.htm
 
 http://www.imf.org/external/datamapper/PCPIPCH@WEO/OEMDC
 
+https://data.worldbank.org/indicator/NY.GDP.MKTP.CD?end=2016&start=2016&view=bar
+
+https://data.worldbank.org/indicator
+
 ## Program
 
 Glavni program in poročilo se nahajata v datoteki `projekt.Rmd`. Ko ga prevedemo,
