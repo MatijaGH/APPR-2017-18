@@ -18,30 +18,30 @@ Projekt bo vseboval 5 tabel:
 
 ## TABELE
 
- Tabela 1: # Cene nafte skozi leta
+ Tabela 1:  Cene nafte skozi leta
 
 Stolpci:
 * Cena nafte
   
- Tabela 2: # Vrednosti valut
+ Tabela 2:  Vrednosti valut
 
 Stolpci:
 * Valute
 * Vrednost valute(upoštevajoč inflacijo...)
   
- Tabela 3: # BDPji držav
+ Tabela 3:  BDPji držav
 
 Stolpci:
 * Država
 * BDP
 
- Tabela 4: # Podatki o uvozu
+ Tabela 4:  Podatki o uvozu
 
 Stolpci:
 * Država
 * Uvoz
 
- Tabela 5: # Podatki o izvozu
+ Tabela 5:  Podatki o izvozu
 
 Stolpci:
 * Država
