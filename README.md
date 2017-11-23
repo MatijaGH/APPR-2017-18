@@ -9,24 +9,8 @@ Repozitorij z gradivi pri predmetu APPR v študijskem letu 2017/18
 V svojem projektu se bom osredotočil na cene naftnih derivatov in vpliv le teh na 
 vrednosti dolarja in valut ostalih držav, ki so močno odvisne od trgovanja z nafto v obdobju od leta 2003 do danes.
 Prav tako bom proučil vpliv cen naft na uvoz in izvoz ter BDP teh držav.
-Kot vire podatkov bom uporabil:
-
-http://www.opec.org/opec_web/en/data_graphs/40.htm
-
-https://www.imf.org/external/np/fin/ert/GUI/Pages/CountryDataBase.aspx
-
-https://tradingeconomics.com/united-states/gdp
-
-http://www.opec.org/opec_web/en/index.htm
-
-http://www.imf.org/external/datamapper/PCPIPCH@WEO/OEMDC
 
 Za izbrane evropske države bom prav tako preučil vpliv cen nafte na gibanje povpraševanja po naftnih dobrinah.
-Podatke bom pridobil s pomočjo Eurostata na naslovih:
-
-http://ec.europa.eu/eurostat/data/database
-
-http://appsso.eurostat.ec.europa.eu/nui/submitViewTableAction.do
 
 V tretji fazi bom dodal zemljevid sveta, na katerem bodo označene največje uvoznice in izvoznice nafte.
 
@@ -70,6 +54,22 @@ Stolpci:
   
 
 S pomočjo svoje analize bom poskusil napovedati prihodnje gibanje naftnih cen in valut.
+
+### Viri:
+
+http://ec.europa.eu/eurostat/data/database
+
+http://appsso.eurostat.ec.europa.eu/nui/submitViewTableAction.do
+
+http://www.opec.org/opec_web/en/data_graphs/40.htm
+
+https://www.imf.org/external/np/fin/ert/GUI/Pages/CountryDataBase.aspx
+
+https://tradingeconomics.com/united-states/gdp
+
+http://www.opec.org/opec_web/en/index.htm
+
+http://www.imf.org/external/datamapper/PCPIPCH@WEO/OEMDC
 
 ## Program
 
