@@ -19,36 +19,27 @@ V tretji fazi bom dodal zemljevid sveta, na katerem bodo označene največje uvo
  Tabela 1:  Cene nafte skozi leta
 
 Stolpci:
-* Leto
-* Cena nafte
+ leto, cena nafte
   
  Tabela 2:  Vrednosti valut
 
 Stolpci:
-* Leto
-* Valute
-* Vrednost valute(upoštevajoč inflacijo...)
+ leto, valute, vrednost valute(upoštevajoč inflacijo...)
   
  Tabela 3:  BDPji držav
 
 Stolpci:
-* Leto
-* Država
-* BDP
+ leto, država, BDP
 
  Tabela 4:  Podatki o uvozu
 
 Stolpci:
-* Leto
-* Država
-* Uvoz
+ leto, država, uvoz
 
  Tabela 5:  Podatki o izvozu
 
 Stolpci:
-* Leto
-* Država
-* Izvoz
+ leto, država, izvoz
   
 
 S pomočjo svoje analize bom poskusil napovedati prihodnje gibanje naftnih cen in valut ter prikazati gibanje
