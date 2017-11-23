@@ -37,8 +37,8 @@ Projekt bo vseboval 5 tabel:
 ### Tabela 1: :
 
 Stolpci:
-*Leto (dan)
-*Cena nafte
+* Leto (dan)
+* Cena nafte
   
 ### Tabela 2:
 
