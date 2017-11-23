@@ -32,34 +32,41 @@ V tretji fazi bom dodal zemljevid sveta, na katerem bodo označene največje uvo
 
 Projekt bo vseboval 5 tabel:
 
-1. tabela:
+## TABELE
 
-  - Leto (dan)
-  - Cena nafte
+### Tabela 1: :
+
+Stolpci:
+*Leto (dan)
+*Cena nafte
   
-2. tabela:
+### Tabela 2:
+
+Stolpci:
+*Leto
+*Valute
+*Vrednost valute(upoštevajoč inflacijo...)
   
-  - Leto
-  - Valute
-  - Vrednost valute(upoštevajoč inflacijo...)
-  
-3. tabela:
+### Tabela 3:
 
-  - Leto
-  - Država
-  - BDP
+Stolpci:
+*Leto
+*Država
+*BDP
 
-4. tabela:
+### Tabela 4:
 
-  - Leto 
-  - Država
-  - Uvoz
+Stolpci:
+*Leto 
+*Država
+*Uvoz
 
-5. tabela:
+### Tabela 5:
 
-  - Leto
-  - Država
-  - Izvoz
+Stolpci:
+*Leto
+*Država
+*Izvoz
   
 
 S pomočjo svoje analize bom poskusil napovedati prihodnje gibanje naftnih cen in valut.
