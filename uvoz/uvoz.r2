@@ -1,7 +1,8 @@
 # 2. faza: Uvoz podatkov
 
 # Uvozim podatke o uvozu in izvozu iz excela
-require('xlsx')
+
+
 uvoz <- read_excel(file = 'importFuel.xls')
 
 
