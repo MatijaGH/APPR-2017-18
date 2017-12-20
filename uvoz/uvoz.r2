@@ -3,10 +3,10 @@
 # Uvozim podatke o uvozu in izvozu iz excela
 
 
-uvoz <- read_excel(file = 'importFuel.xls')
+uvoz <- read_excel('importFuel.xls')
 
 
-izvoz <- read_excel(file = 'exportFuel.xls')
+izvoz <- read_excel('exportFuel.xls')
 
 
 
@@ -15,13 +15,16 @@ izvoz <- read_excel(file = 'exportFuel.xls')
 
 #Uvozim podatke o BDPju
 
-BDP <- read.csv(file = 'BDPpodatki.csv',
+BDP <- read_excel('BDPpodatki.xlsx',
               header = TRUE,
               skip = 3, na = c('',' ','-'))
               
               
 #Uvozim podatke o gibanju cen nafte
-#ne znam, treba iz formata xml, praši asistenta
+
+nafta <- xmlParse('http://www.opec.org/basket/basketDayArchives.xml')
+xml_nafta <- xmlToList(nafta)
+
 
 #Uvozim podatke o gibanju vrednosti valut v primerjavi s SDR
 
