@@ -25,4 +25,6 @@ BDP <- read.csv(file = 'BDPpodatki.csv',
 
 #Uvozim podatke o gibanju vrednosti valut v primerjavi s SDR
 
-valute <- read.csv(file = 'PodatkiOValutah.csv')
+valute <- read.csv(file = 'PodatkiOValutah.csv', 
+              header = TRUE,
+              na = c('',' ','-'))
