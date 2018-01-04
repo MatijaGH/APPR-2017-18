@@ -10,5 +10,6 @@ library(tidyr)
 library(tidyverse)
 library(readxl)
 library(XML)
+library(plyr)
 # Uvozimo funkcije za pobiranje in uvoz zemljevida.
 source("lib/uvozi.zemljevid.r", encoding = "UTF-8")
