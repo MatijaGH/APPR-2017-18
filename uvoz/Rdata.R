@@ -16,10 +16,13 @@ izvoz <- uvozi_excel('podatki/exportFuel.xls')
 
 
 #Uvozim podatke o BDPju
-BDP <- read.csv(file = 'BDP2podatki.csv',skip = 4,header = TRUE,
-                na = c('','NY.GDP.MKTP.CD'),
-                colClasses = c(NA,'NULL','NULL','NULL'))
+uvozi_BDP <- function(mapa) {
+  BDP <- read.csv(file = mapa, skip = 4, header = TRUE,
+                  na = c('','NY.GDP.MKTP.CD'),
+                  colClasses = c(NA,'NULL','NULL','NULL'))
+}
 
+BDP <- uvozi_BDP('podatki/BDP2podatki.csv')
 
 #Uvozim podatke o gibanju cen nafte
 
@@ -32,7 +35,8 @@ Cene <- Cene[,2]
 
 
 #Uvozim podatke o gibanju vrednosti valut v primerjavi z valuto SDR
+uvozi_valute <- function(mapa) {
+  valute <- read.csv(file = mapa, header = TRUE, na = c('',' ','-'))
+}
 
-valute <- read.csv(file = 'PodatkiOValutah.csv', 
-              header = TRUE,
-              na = c('',' ','-'))
+valute <- uvozi_excel('podatki/PodatkiOValutah.xlsx')
