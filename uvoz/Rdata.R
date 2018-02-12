@@ -1,7 +1,7 @@
 # 2. faza: Uvoz podatkov
 
 # Uvozim podatke o uvozu in izvozu iz excela
-uvozi_excel <- function(mapa) {
+uvozi_trgovanje <- function(mapa) {
   uvozeno <- read_excel(mapa,col_names = FALSE)
   visina <- dim(uvozeno)[1]
   sirina <- dim(uvozeno)[2]
@@ -16,12 +16,12 @@ uvozi_excel <- function(mapa) {
   return(tabela)
 }
   
-uvoz <- uvozi_excel('podatki/importFuel.xls')
+uvoz <- uvozi_trgovanje('podatki/importFuel.xls')
 
 
 
 
-izvoz <- uvozi_excel('podatki/exportFuel.xls')
+izvoz <- uvozi_trgovanje('podatki/exportFuel.xls')
 
 
 
@@ -52,4 +52,20 @@ xml_df <- data.frame(t(topxml),row.names = NULL)
 
 
 #Uvozim podatke o gibanju vrednosti valut v primerjavi z valuto SDR
-valute <- uvozi_excel('podatki/PodatkiOValutah.xlsx')
+uvozi_valute <- function(mapa){
+  uvozeno <- read_excel(mapa,col_names = FALSE)
+  visina <- dim(uvozeno)[1]
+  sirina <- dim(uvozeno)[2]
+  tabela <- array(,c(visina-3,3))
+  for(stolpec in 2:sirina){
+    for(vrstica in 3:visina-1){
+      tabela[vrstica-2,1] <- unlist(uvozeno[3,stolpec])
+      tabela[vrstica-2,2] <- suppressWarnings(as.numeric(uvozeno[vrstica + 1,1]))
+      tabela[vrstica-2,3] <- suppressWarnings(as.numeric(uvozeno[vrstica+1,stolpec]))
+    }
+  }
+  return(tabela)
+}
+
+  
+valute <- uvozi_valute('podatki/PodatkiOValutah.xlsx')
