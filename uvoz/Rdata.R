@@ -1,13 +1,14 @@
 # 2. faza: Uvoz podatkov
 
 # Uvozim podatke o uvozu in izvozu iz excela
-install.package('readxl')
-library('readxl')
-gdata
-uvoz <- read_excel(file = 'importFuel.xls')
+uvozi_excel <- function(mapa) {
+  read_excel(mapa)
+}
+  
 
+uvoz <- uvozi_excel('podatki/importFuel.xls')
 
-izvoz <- read_excel(file = 'exportFuel.xls')
+izvoz <- uvozi_excel('podatki/exportFuel.xls')
 
 
 
