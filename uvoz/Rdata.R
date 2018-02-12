@@ -30,9 +30,12 @@ izvoz <- uvozi_trgovanje('podatki/exportFuel.xls')
 
 #Uvozim podatke o BDPju
 uvozi_BDP <- function(mapa) {
-  BDP <- read.csv(file = mapa, skip = 4, header = TRUE,
+  BDP <- read.csv(file = mapa,skip = 4, header = TRUE,
                   na = c('','NY.GDP.MKTP.CD'),
                   colClasses = c(NA,'NULL','NULL','NULL'))
+  BDP <- melt(BDP,id.vars = 1)
+  colnames(BDP) <- c('Država','Leto','BDP')
+  return(BDP)
 }
 
 BDP <- uvozi_BDP('podatki/BDP2podatki.csv')
