@@ -1,74 +1,49 @@
 # 2. faza: Uvoz podatkov
 
 # Uvozim podatke o uvozu in izvozu iz excela
-uvozi_trgovanje <- function(mapa) {
-  uvozeno <- read_excel(mapa,col_names = FALSE)
-  visina <- dim(uvozeno)[1]
-  sirina <- dim(uvozeno)[2]
-  tabela <- array(,c(sirina-1,3))
-  for(vrstica in 1:visina){
-    for(stolpec in 2:sirina){
-      tabela[stolpec-1,1] <- unlist(uvozeno[vrstica,1])
-      tabela[stolpec-1,2] <- as.numeric(uvozeno[1,stolpec])
-      tabela[stolpec-1,3] <- as.numeric(uvozeno[vrstica,stolpec])
-    }
-  }
-  return(tabela)
-}
+uvoz <- read_excel('podatki/importFuel.xls') %>% 
+  rename(Drzava = `Country Name`) %>%
+  melt(id.vars = "Drzava", variable.name = "Leto",
+       value.name = "Vrednost") %>%
+  mutate(Leto = parse_number(Leto))
   
-uvoz <- uvozi_trgovanje('podatki/importFuel.xls')
+izvoz <- read_excel('podatki/exportFuel.xls') %>% 
+  rename(Drzava = `Country Name`) %>%
+  melt(id.vars = "Drzava", variable.name = "Leto",
+       value.name = "Vrednost") %>%
+  mutate(Leto = parse_number(Leto))
+  
 
-
-
-
-izvoz <- uvozi_trgovanje('podatki/exportFuel.xls')
-
-
-
-
-
+uvoz.izvoz <- rbind(uvoz %>% mutate(tip = 'uvoz'),
+                    izvoz %>% mutate(tip = 'izvoz'))
 
 #Uvozim podatke o BDPju
-uvozi_BDP <- function(mapa) {
-  BDP <- read.csv(file = mapa,skip = 4, header = TRUE,
-                  na = c('','NY.GDP.MKTP.CD'),
-                  colClasses = c(NA,'NULL','NULL','NULL'))
-  BDP <- melt(BDP,id.vars = 1)
-  colnames(BDP) <- c('Država','Leto','BDP')
-  return(BDP)
-}
+BDP <- read_csv('podatki/BDP2podatki.csv',skip = 4,
+                na = c('','NY.GDP.MKTP.CD')) %>%
+  select(-2,-3,-4,-63) %>% rename(Drzava = 'Country Name') %>%
+  melt(id.vars = 'Drzava', variable.name = 'Leto', value.name = 'BDP') %>%
+  mutate(Leto = parse_number(Leto))
 
-BDP <- uvozi_BDP('podatki/BDP2podatki.csv')
 
 #Uvozim podatke o gibanju cen nafte
-xmlfile <- xmlParse('http://www.opec.org/basket/basketDayArchives.xml')
-xmltop <- xmlRoot(xmlfile)
-Cene <- ldply(xmlToList('http://www.opec.org/basket/basketDayArchives.xml'),
-              data.frame)
-Cene <- Cene[,2]
-
-xmlfile2 <- xmlTreeParse('http://www.opec.org/basket/basketDayArchives.xml')
-topxml <- xmlRoot(xmlfile2)
-topxml <- xmlSApply(topxml,xmlValue)
-xml_df <- data.frame(t(topxml),row.names = NULL)
+Cene <- read_xml("http://www.opec.org/basket/basketDayArchives.xml") %>%
+  xml_children() %>% xml_attrs() %>% lapply(as.list) %>%
+  bind_rows() %>% 
+  transmute(Datum = parse_date(data),Vrednost = parse_number(val))
 
 
 
 #Uvozim podatke o gibanju vrednosti valut v primerjavi z valuto SDR
-uvozi_valute <- function(mapa){
-  uvozeno <- read_excel(mapa,col_names = FALSE)
-  visina <- dim(uvozeno)[1]
-  sirina <- dim(uvozeno)[2]
-  tabela <- array(,c(visina-3,3))
-  for(stolpec in 2:sirina){
-    for(vrstica in 3:visina-1){
-      tabela[vrstica-2,1] <- unlist(uvozeno[3,stolpec])
-      tabela[vrstica-2,2] <- suppressWarnings(as.numeric(uvozeno[vrstica + 1,1]))
-      tabela[vrstica-2,3] <- suppressWarnings(as.numeric(uvozeno[vrstica+1,stolpec]))
-    }
-  }
-  return(tabela)
-}
+datumi <- read_excel('podatki/PodatkiOValutah.xlsx', 
+                     range = 'A3:A3811',col_types = c('text')) %>%
+  mutate(Date = parse_date(Date,format = '%d-%b-%Y',
+                           locale = locale('en')))
+
+valute <- read_excel('podatki/PodatkiOValutah.xlsx', range = 'A3:R3811',
+                     col_types = c('date',rep('numeric',17))) %>%
+  rename(Datum = Date) %>%
+  mutate(Datum = if_else(is.na(Datum),datumi$Date, parse_date(Datum))) %>%
+  melt(id.vars = 'Datum', vaiable.name = 'Valuta', value.name = 'Vrednost')
+  
 
   
-valute <- uvozi_valute('podatki/PodatkiOValutah.xlsx')
