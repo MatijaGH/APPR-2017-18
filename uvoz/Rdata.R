@@ -43,7 +43,7 @@ valute <- read_excel('podatki/PodatkiOValutah.xlsx', range = 'A3:R3811',
                      col_types = c('date',rep('numeric',17))) %>%
   rename(Datum = Date) %>%
   mutate(Datum = if_else(is.na(Datum),datumi$Date, parse_date(Datum))) %>%
-  melt(id.vars = 'Datum', vaiable.name = 'Valuta', value.name = 'Vrednost')
+  melt(id.vars = 'Datum', variable.name = 'Valuta', value.name = 'Vrednost')
   
 
   
