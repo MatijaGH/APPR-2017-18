@@ -1,4 +1,4 @@
-# Analiza vpliva cen nafte na svetovno gospodarstvo
+# Analiza vpliva cen nafte na izbrana gospodarstva
 
 Avtor: Matija Gubanec Hančič
 
@@ -6,44 +6,43 @@ Repozitorij z gradivi pri predmetu APPR v študijskem letu 2017/18
 
 ## Tematika
 
-V svojem projektu se bom osredotočil na cene naftnih derivatov in vpliv le teh na 
-vrednosti dolarja in valut ostalih držav, ki so močno odvisne od trgovanja z nafto v obdobju od leta 2003 do danes.
+V svojem projektu se bom osredotočil na cene naftnih derivatov in vpliv teh na 
+vrednost dolarja in valut izbranih ostalih držav, ki so močno odvisne od trgovanja z nafto v obdobjih, ki so zgodovinsko gledano močno zaznamovana z bojem za nafto in primerjal to z obdobji relativne mirnosti.
 Prav tako bom preučil vpliv cen nafte na uvoz in izvoz ter BDP teh držav.
 
-Za izbrane evropske države bom preučil vpliv cen nafte na gibanje povpraševanja po naftnih dobrinah.
+Za izbrane evropske države bom preučil vpliv cene nafte na gibanje povpraševanja po naftnih dobrinah.
 
 V tretji fazi bom dodal zemljevid sveta, na katerem bodo označene največje uvoznice in izvoznice nafte.
 
 ## Zasnova podatkovnega modela
 
- ##### Tabela 1:  Cene nafte skozi leta
+ ##### Tabela 1:  Cena nafte skozi leta
 
 Stolpci:
- leto, cena nafte
+ datum, cena nafte
   
  ##### Tabela 2:  Vrednosti valut
 
 Stolpci:
- leto, valute, vrednost valute(upoštevajoč inflacijo...)
+ datum, valuta, vrednost valute(zanemarjajoč inflacijo)
   
  ##### Tabela 3:  BDPji držav
 
 Stolpci:
- leto, država, BDP
+ država, leto, BDP
 
  ##### Tabela 4:  Podatki o uvozu
 
 Stolpci:
- leto, država, uvoz
+ država, leto, uvoz
 
  ##### Tabela 5:  Podatki o izvozu
 
 Stolpci:
- leto, država, izvoz
+ država, leto, izvoz
   
 
-S pomočjo svoje analize bom poskusil napovedati prihodnje gibanje naftnih cen in valut ter prikazati gibanje
-le teh v preteklosti.
+S pomočjo svoje analize bom poskusil napovedati prihodnje gibanje naftnih cen in valut ter prikazati gibanje v preteklosti.
 
 ### Viri:
 
