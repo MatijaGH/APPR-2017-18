@@ -13,4 +13,7 @@
 #  summarise(povprecje = sum(velikost.druzine * stevilo.druzin) / sum(stevilo.druzin))
 
 #uvozimo zemljevid sveta
-zemljevid <- uvozi.zemljevid('https://www.cia.gov/library/publications/the-world-factbook/attachments/images/large/world-political.jpg?1547145656',encoding = '')
+zemljevid <- uvozi.zemljevid('https://www.cia.gov/library/publications/the-world-factbook/attachments/images/large/world-political.jpg?1547145656',,encoding = '')
+uvozi.zemljevid <- function(url, pot.zemljevida, mapa = "../zemljevidi",
+                            encoding = "UTF-8", force = FALSE)
+  

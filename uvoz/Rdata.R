@@ -1,13 +1,13 @@
 # 2. faza: Uvoz podatkov
 
 # Uvozim podatke o uvozu in izvozu iz excela
-uvoz <- read_excel('podatki/importFuel.xls') %>% 
+uvoz <- read_excel('podatki/importFuel1.xls') %>% 
   rename(Drzava = `Country Name`) %>%
   melt(id.vars = "Drzava", variable.name = "Leto",
        value.name = "Vrednost") %>%
   mutate(Leto = parse_number(Leto))
   
-izvoz <- read_excel('podatki/exportFuel.xls') %>% 
+izvoz <- read_excel('podatki/exportFuel1.xls') %>% 
   rename(Drzava = `Country Name`) %>%
   melt(id.vars = "Drzava", variable.name = "Leto",
        value.name = "Vrednost") %>%
@@ -34,12 +34,12 @@ Cene <- read_xml("http://www.opec.org/basket/basketDayArchives.xml") %>%
 
 
 #Uvozim podatke o gibanju vrednosti valut v primerjavi z valuto SDR
-datumi <- read_excel('podatki/PodatkiOValutah.xlsx', 
+datumi <- read_excel('podatki/PodatkiOValutah1.xlsx', 
                      range = 'A3:A3811',col_types = c('text')) %>%
   mutate(Date = parse_date(Date,format = '%d-%b-%Y',
                            locale = locale('en')))
 
-valute <- read_excel('podatki/PodatkiOValutah.xlsx', range = 'A3:R3811',
+valute <- read_excel('podatki/PodatkiOValutah1.xlsx', range = 'A3:R3811',
                      col_types = c('date',rep('numeric',17))) %>%
   rename(Datum = Date) %>%
   mutate(Datum = if_else(is.na(Datum),datumi$Date, parse_date(Datum))) %>%
