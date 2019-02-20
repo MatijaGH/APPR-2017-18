@@ -11,5 +11,10 @@ library(tidyverse)
 library(readxl)
 library(XML)
 library(reshape2)
+library(maptools)
+library(sp)
+
+#uvoz funkcij za zemlejvid
+source("lib/uvozi.zemljevid.r")
 
 
