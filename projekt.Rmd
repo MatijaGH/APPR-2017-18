@@ -19,10 +19,11 @@ runtime: shiny
 source("lib/libraries.r", encoding = "UTF-8")
 ```
 
-# Izbira teme
+# 1. Izbira teme
 
-Za vzorec bomo prikazali nekaj podatkov o slovenskih občinah.
+Za temo svojega projekta sem se odločil analizirati vpliv cene nafte na izbrana gospodarstva. Za to temo sem se odločil, ker sem velikokrat poslušal o problemih in velikih denarjih, ki se obračajo v naftnih poslih.
 
+![](https://steemitimages.com/p/5s4dzRwnVbzHV6N74jCXgQHYcrjy9ZzoMubgdzr9EzCy8GjmwURrwqmn61jKo6fadekZxWVsARqVUVSWr1BQu92xaYQ4pLm2L7HbSnkJorpg7fzuDPfbvBwhUz7Y3DZfxVXNuThYnLCGK1pUPNKgj6h6nnTeWLxEG2rSmFt?format=match&mode=fit&width=640)
 ***
 
 # Obdelava, uvoz in čiščenje podatkov
@@ -31,26 +32,49 @@ Za vzorec bomo prikazali nekaj podatkov o slovenskih občinah.
 source("uvoz/uvoz.r", encoding = "UTF-8")
 ```
 
-Uvozili smo podatke o občinah v obliki CSV s statističnega urada ter v obliki HTML
-z Wikipedije. Podatke imamo v dveh razpredelnicah v obliki *tidy data*.
+Uvozil sem podatke o uvozu in izvozu v Excel dokumentu, BDPju in vrednostih valut v obliki CSV, podatke o ceni nafte pa sem pridobil s spletne strani v obliki XML datoteke. Dobljene podatke sem nato uredil v štiri razpredelnice v obliko *tidy data*.
 
-1. `druzine` - podatki o družinah za vsako občino
-  - `obcina` - spremenljivka: ime občine (neurejen faktor),
-  - `velikost.druzine` - spremenljivka: število otrok v družini (število: 1, 2, 3 ali 4, kjer zadnja vrednost pomeni 4 ali več),
-  - `stevilo.druzin` - meritev: število družin z ustreznim številom otrok v ustrezni občini (število).
+1. `BDP` - podatki o BDP-ju za vsako državo
+  - `drzava` - spremenljivka: ime države (neurejen faktor),
+  - `leto` - spremenljivka: leto(pove, za katero leto imamo podan BDP),
+  - `BDP` - meritev: bruto domači proizvod (število)
+  
+  ```{r BDP, echo=FALSE, message= FALSE}
+  kable(head(BDP))
+  ```
+  
+  
+2. `Cene` - podatki o ceni nafte za vsak dan med 2003 in 2017
+  - `Datum` - spremenljivka: datum, na katerega se nanaša meritev (neurejen faktor)
+  - `Vrednost` - meritev: vrednost nafte v ameriških dolarjih na določen dan (število)
+    
+  ```{r Cene, echo=FALSE, message= FALSE}
+  kable(head(Cene))
+  ```
+  
+  
+3. `uvoz.izvoz` - podatki o uvozu in izvozu nafte za vsako državo
+  - `drzava` - spremenljivka: ime države (neurejen faktor)
+  - `leto` - spremenljivka: leto, na katero se meritev nanaša (neurejen faktor)
+  - `vrednost` - meritev: količina izvoza/uvoza, izražena v ameriških dolarjih (število)
+  - `tip` - spremenljivka: vrsta transakcije, uvod/izvoz (besedilo)
+    
+  ```{r uvoz.izvoz, echo=FALSE, message= FALSE}
+  kable(head(uvoz.izvoz))
+  ```
+  
+  
+4. `valute` - podatki o vrednostih valut
+  - `datum` - spremenljivka: datum, na katerega se nanaša meritev (neurejen faktor)
+  - `valuta` - spremenljivka: navede tip valute, ki jo proučujemo (besedilo)
+  - `vrednost` - meritev: pove vrednost valute, izražene v neki povprečni valuti SFR (število)
+  
+  ```{r Valute, echo=FALSE, message= FALSE}
+  kable(head(Valute))
+  ```
+  
+  
 
-2. `obcine` - podatki o občinah
-  - `obcina` - spremenljivka: ime občine (neurejen faktor),
-  - `povrsina` - meritev: površina občine v km$^2$ (število),
-  - `prebivalci` - meritev: prebivalstvo občine (število),
-  - `gostota` - meritev: število prebivalcev na km$^2$ (število),
-  - `naselja` - meritev: število naselij v občini (število),
-  - `ustanovitev` - meritev: leto ustanovitve občine (število),
-  - `pokrajina` - meritev: pokrajina, ki ji občina pripada (neurejen faktor),
-  - `regija` - meritev: regija, ki ji občina pripada (neurejen faktor),
-  - `odcepitev` - meritev: podatki o občinah, od katerih se je občina odcepila (besedilo).
-
-**Opomba**: da bi razpredelnica `obcine` res bila v obliki *tidy data*, bi morali odstraniti stolpec `gostota` (saj je izpeljan iz stolpcev `povrsina` in `prebivalci`), podatke o pokrajinah pa bi morali premakniti v drugo razpredelnico, saj nekatere občine pripadajo dvema pokrajinama. Podobno bi morali narediti tudi s stolpcem `odcepitev`.
 
 Spodnji graf prikazuje porazdelitev števila naselij v občinah.
 

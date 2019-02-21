@@ -1,54 +1,48 @@
 # 2. faza: Uvoz podatkov
 
-sl <- locale("sl", decimal_mark = ",", grouping_mark = ".")
+# Uvozim podatke o uvozu in izvozu iz excela
+uvoz <- read_excel('podatki/importFuel1.xls') %>% 
+  rename(Drzava = `Country Name`) %>%
+  melt(id.vars = "Drzava", variable.name = "Leto",
+       value.name = "Vrednost") %>%
+  mutate(Leto = parse_number(Leto))
 
-# Funkcija, ki uvozi občine iz Wikipedije
-uvozi.obcine <- function() {
-  link <- "http://sl.wikipedia.org/wiki/Seznam_ob%C4%8Din_v_Sloveniji"
-  stran <- html_session(link) %>% read_html()
-  tabela <- stran %>% html_nodes(xpath="//table[@class='wikitable sortable']") %>%
-    .[[1]] %>% html_table(dec = ",")
-  for (i in 1:ncol(tabela)) {
-    if (is.character(tabela[[i]])) {
-      Encoding(tabela[[i]]) <- "UTF-8"
-    }
-  }
-  colnames(tabela) <- c("obcina", "povrsina", "prebivalci", "gostota", "naselja",
-                        "ustanovitev", "pokrajina", "regija", "odcepitev")
-  tabela$obcina <- gsub("Slovenskih", "Slov.", tabela$obcina)
-  tabela$obcina[tabela$obcina == "Kanal ob Soči"] <- "Kanal"
-  tabela$obcina[tabela$obcina == "Loški potok"] <- "Loški Potok"
-  for (col in c("povrsina", "prebivalci", "gostota", "naselja", "ustanovitev")) {
-    tabela[[col]] <- parse_number(tabela[[col]], na = "-", locale = sl)
-  }
-  for (col in c("obcina", "pokrajina", "regija")) {
-    tabela[[col]] <- factor(tabela[[col]])
-  }
-  return(tabela)
-}
+izvoz <- read_excel('podatki/exportFuel1.xls') %>% 
+  rename(Drzava = `Country Name`) %>%
+  melt(id.vars = "Drzava", variable.name = "Leto",
+       value.name = "Vrednost") %>%
+  mutate(Leto = parse_number(Leto))
 
-# Funkcija, ki uvozi podatke iz datoteke druzine.csv
-uvozi.druzine <- function(obcine) {
-  data <- read_csv2("podatki/druzine.csv", col_names = c("obcina", 1:4),
-                    locale = locale(encoding = "Windows-1250"))
-  data$obcina <- data$obcina %>% strapplyc("^([^/]*)") %>% unlist() %>%
-    strapplyc("([^ ]+)") %>% sapply(paste, collapse = " ") %>% unlist()
-  data$obcina[data$obcina == "Sveti Jurij"] <- "Sveti Jurij ob Ščavnici"
-  data <- data %>% melt(id.vars = "obcina", variable.name = "velikost.druzine",
-                        value.name = "stevilo.druzin")
-  data$velikost.druzine <- parse_number(data$velikost.druzine)
-  data$obcina <- factor(data$obcina, levels = obcine)
-  return(data)
-}
 
-# Zapišimo podatke v razpredelnico obcine
-obcine <- uvozi.obcine()
+uvoz.izvoz <- rbind(uvoz %>% mutate(tip = 'uvoz'),
+                    izvoz %>% mutate(tip = 'izvoz'))
 
-# Zapišimo podatke v razpredelnico druzine.
-druzine <- uvozi.druzine(levels(obcine$obcina))
+#Uvozim podatke o BDPju
+BDP <- read_csv('podatki/BDP2podatki.csv',skip = 4,
+                na = c('','NY.GDP.MKTP.CD')) %>%
+  select(-2,-3,-4,-63) %>% rename(Drzava = 'Country Name') %>%
+  melt(id.vars = 'Drzava', variable.name = 'Leto', value.name = 'BDP') %>%
+  mutate(Leto = parse_number(Leto))
 
-# Če bi imeli več funkcij za uvoz in nekaterih npr. še ne bi
-# potrebovali v 3. fazi, bi bilo smiselno funkcije dati v svojo
-# datoteko, tukaj pa bi klicali tiste, ki jih potrebujemo v
-# 2. fazi. Seveda bi morali ustrezno datoteko uvoziti v prihodnjih
-# fazah.
+
+#Uvozim podatke o gibanju cen nafte
+Cene <- read_xml("http://www.opec.org/basket/basketDayArchives.xml") %>%
+  xml_children() %>% xml_attrs() %>% lapply(as.list) %>%
+  bind_rows() %>% 
+  transmute(Datum = parse_date(data),Vrednost = parse_number(val))
+
+
+
+#Uvozim podatke o gibanju vrednosti valut v primerjavi z valuto SDR
+datumi <- read_excel('podatki/PodatkiOValutah1.xlsx', 
+                     range = 'A3:A3811',col_types = c('text')) %>%
+  mutate(Date = parse_date(Date,format = '%d-%b-%Y',
+                           locale = locale('en')))
+
+valute <- read_excel('podatki/PodatkiOValutah1.xlsx', range = 'A3:I3811',
+                     col_types = c('date',rep('numeric',8))) %>%
+  rename(Datum = Date) %>%
+  mutate(Datum = if_else(is.na(Datum),datumi$Date, parse_date(Datum))) %>%
+  melt(id.vars = 'Datum', variable.name = 'Valuta', value.name = 'Vrednost')
+
+
