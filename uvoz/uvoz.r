@@ -24,6 +24,11 @@ BDP <- read_csv('podatki/BDP2podatki.csv',skip = 4,
   melt(id.vars = 'Drzava', variable.name = 'Leto', value.name = 'BDP') %>%
   mutate(Leto = parse_number(Leto))
 
+BDP <- BDP %>% filter(Drzava =='Arab World' | Drzava == 'China'
+                      | Drzava == 'United Kingdom' | Drzava == 'Iraq'
+                      | Drzava == 'Kuwait' | Drzava == 'Russian Federation'
+                      | Drzava == 'Saudi Arabia' | Drzava == 'United States'
+                      | Drzava == 'Venezuela, RB')
 
 #Uvozim podatke o gibanju cen nafte
 Cene <- read_xml("http://www.opec.org/basket/basketDayArchives.xml") %>%
