@@ -63,7 +63,7 @@ graf.BDP.obe <- ggplot(data=BDP.irak,
                       values = c('green','black')) +
   labs(title = 'BDP')
 
-#Tabela cen
+#Graf cen
 graf.cen <- ggplot(Cene, aes(Datum, Vrednost)) + 
   geom_line() + xlab('Èas') + ylab('Cena nafte')
 

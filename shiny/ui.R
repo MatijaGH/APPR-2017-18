@@ -20,14 +20,32 @@ shinyUI(fluidPage(
   titlePanel('Analiza vpliva cen nafte na izbrana gospodarstva'),
   
   tabsetPanel(
-    tabPanel('Valute',
-             DT::dataTableOutput('valute')),
-    
+    tabPanel('Cena nafte',
+             mainPanel(plotOutput('graf.cen'))),
     tabPanel('BDP',
              sidebarPanel(
-               uiOutput('Drzave')
+               selectInput('Drzava', label = 'Izberi drzavo',
+                           choices = unique(BDP$Drzava))),
+             mainPanel(plotOutput('graf.BDP'))
              ),
-             mainPanel(plotOutput('Macki'))
-             ))
+    tabPanel('Primerjava BDPja po svetu',
+             mainPanel(plotOutput('BDPsvet'))),
+    tabPanel('Vrednost valut',
+             sidebarPanel(
+               radioButtons('Valuta', label = 'Izberi valuto',
+                            choices = unique(valute$Valuta))
+             ),
+             mainPanel(plotOutput('graf.valuta'))),
+    tabPanel('Uvoz in izvoz',
+             sidebarPanel(
+               selectInput('Drzava1', label = 'Izberi drzavo',
+                           choices = unique(uvoz.izvoz$Drzava)),
+               radioButtons('UvozIzvoz', label = 'Uvoz ali izvoz?',
+                            choices = unique(uvoz.izvoz$tip)
+                            )
+             ),
+             mainPanel(tableOutput('tabela.uvoz.izvoz')))
   )
 )
+)
+
