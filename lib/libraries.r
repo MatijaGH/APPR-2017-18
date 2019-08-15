@@ -13,8 +13,10 @@ library(XML)
 library(reshape2)
 library(maptools)
 library(sp)
+library(fpp2)
+library(DT)
 
-#uvoz funkcij za zemlejvid
+#uvoz funkcij za zemljevid
 source("lib/uvozi.zemljevid.r")
 
 

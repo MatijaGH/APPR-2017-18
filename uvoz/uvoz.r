@@ -1,7 +1,7 @@
 # 2. faza: Uvoz podatkov
 
 # Uvozim podatke o uvozu in izvozu iz excela
-uvoz <- read_excel('podatki/importFuel1.xls') %>% 
+uvoz <- read_excel("podatki/importFuel1.xls") %>% 
   rename(Drzava = `Country Name`) %>%
   melt(id.vars = "Drzava", variable.name = "Leto",
        value.name = "Vrednost") %>%
