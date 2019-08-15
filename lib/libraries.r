@@ -15,6 +15,10 @@ library(maptools)
 library(sp)
 library(fpp2)
 library(DT)
+library(rmarkdown)
+library(sp)
+library(digest)
+library(extrafont)
 
 #uvoz funkcij za zemljevid
 source("lib/uvozi.zemljevid.r")
