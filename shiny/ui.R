@@ -29,6 +29,9 @@ shinyUI(fluidPage(
              mainPanel(plotOutput('graf.BDP'))
              ),
     tabPanel('Primerjava BDPja po svetu',
+             sidebarPanel(
+               selectInput('Leto', label = 'Leto',
+                           choices = unique(BDP$Leto))),
              mainPanel(plotOutput('BDPsvet'))),
     tabPanel('Vrednost valut',
              sidebarPanel(

@@ -4,6 +4,10 @@ Avtor: Matija Gubanec Hančič
 
 Repozitorij z gradivi pri predmetu APPR v študijskem letu 2017/18
 
+* [![Shiny](http://mybinder.org/badge.svg)](http://beta.mybinder.org/v2/gh/evadezelak/APPR-2018-19/master?urlpath=shiny/APPR-2018-19/projekt.Rmd) Shiny
+
+* [![RStudio](http://mybinder.org/badge.svg)](http://beta.mybinder.org/v2/gh/evadezelak/APPR-2018-19/master?urlpath=rstudio) RStudio
+
 ## Tematika
 
 V svojem projektu se bom osredotočil na cene naftnih derivatov in vpliv teh na 
@@ -95,3 +99,11 @@ Za zagon tega vzorca je potrebno namestiti sledeče pakete za R:
 * `gsubfn` - za delo z nizi (čiščenje podatkov)
 * `ggplot2` - za izrisovanje grafov
 * `extrafont` - za pravilen prikaz šumnikov (neobvezno)
+* `tidyr`
+* `tidyverse`
+* `readxl`
+* `XML`
+* `maptools`
+* `fpp2`
+
+

@@ -50,9 +50,9 @@ server <- function(input, output) {
                                  "ne_110m_admin_0_map_units", encoding = "UTF-8") %>%
       pretvori.zemljevid()
     
-    zemljevid.BDP <- ggplot() + geom_polygon(data=zemljevid %>% left_join(BDP2013, by=c("SOVEREIGNT"="Drzava")),
+    zemljevid.BDP <- ggplot() + geom_polygon(data=zemljevid %>% left_join(BDP %>% filter(Leto == input$Leto), by=c("SOVEREIGNT"="Drzava")),
                                              aes(x=long, y=lat, group=group, fill=BDP / 1e12)) +
-      guides(fill=guide_colorbar("BDP v milijardah dolarjev"))
+      guides(fill=guide_colorbar("BDP v bilijonih dolarjev"))
     
     print(zemljevid.BDP)
   })

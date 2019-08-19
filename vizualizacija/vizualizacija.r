@@ -65,14 +65,14 @@ graf.BDP.obe <- ggplot(data=BDP.irak,
 
 #Graf cen
 graf.cen <- ggplot(Cene, aes(Datum, Vrednost)) + 
-  geom_line() + xlab('Èas') + ylab('Cena nafte')
+  geom_line() + xlab('Cas') + ylab('Cena nafte')
 
 #Grafi za valute
 graf.valut.evro <- ggplot(tabela.evro, aes(Datum, Vrednost)) + 
-  geom_line() + xlab('Èas') + ylab('Vrednost evra')
+  geom_line() + xlab('Cas') + ylab('Vrednost evra')
 
 graf.valut.SA <- ggplot(tabela.SA, aes(Datum, Vrednost)) + 
-  geom_line() + xlab('Èas') + ylab('Vrednost SA riala')
+  geom_line() + xlab('Cas') + ylab('Vrednost SA riala')
 
 graf.vrednosti <- ggplot(data=tabela.evro, 
                         aes(x=Datum,
@@ -108,6 +108,7 @@ zemljevid <- uvozi.zemljevid("http://www.naturalearthdata.com/http//www.naturale
 zemljevid.BDP <- ggplot() + geom_polygon(data=zemljevid %>% left_join(BDP2013, by=c("SOVEREIGNT"="Drzava")),
                         aes(x=long, y=lat, group=group, fill=BDP / 1e12)) +
   guides(fill=guide_colorbar("BDP v milijardah dolarjev"))
+
 
 
 
