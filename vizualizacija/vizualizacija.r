@@ -20,67 +20,67 @@ ggplot(uvoz2013, aes(dist, delay)) +
 
 #Graf uvoza za ZDA in Kitajsko
 
-graf.uvoz.obe <- ggplot(data=uvoz.ZDA, 
-                        aes(x=Leto,
-                            y=Vrednost, group=1)) +
-  geom_line(color = 'blue')+
-  geom_point(color = 'blue') +
-  geom_point(data = uvoz.kitajska,
-             aes(x = Leto, y = Vrednost),
-             color = 'red') + 
-  geom_line(data = uvoz.kitajska, color = 'red') + 
-  scale_colour_manual('',breaks = c('ZDA', 'Kitajska'),
-                      values = c('blue','red')) +
-  labs(title = 'Uvoz')
+# graf.uvoz.obe <- ggplot(data=uvoz.ZDA, 
+#                         aes(x=Leto,
+#                             y=Vrednost, group=1)) +
+#   geom_line(color = 'blue')+
+#   geom_point(color = 'blue') +
+#   geom_point(data = uvoz.kitajska,
+#              aes(x = Leto, y = Vrednost),
+#              color = 'red') + 
+#   geom_line(data = uvoz.kitajska, color = 'red') + 
+#   scale_colour_manual('',breaks = c('ZDA', 'Kitajska'),
+#                       values = c('blue','red')) +
+#   labs(title = 'Uvoz')
 
 #Graf izvoza za Irak in Savdsko Arabijo
 
-graf.izvoz.obe <- ggplot(data=izvoz.irak, 
-                         aes(x=Leto,
-                             y=Vrednost, group=1)) +
-  geom_line(color = 'green')+
-  geom_point(color = 'green') +
-  geom_point(data = izvoz.SA,
-             aes(x = Leto, y = Vrednost),
-             color = 'black') + 
-  geom_line(data = izvoz.SA, color = 'black') + 
-  scale_colour_manual('',breaks = c('Irak', 'Savdska Arabija'),
-                      values = c('green','black')) +
-  labs(title = 'Izvoz')
+# graf.izvoz.obe <- ggplot(data=izvoz.irak, 
+#                          aes(x=Leto,
+#                              y=Vrednost, group=1)) +
+#   geom_line(color = 'green')+
+#   geom_point(color = 'green') +
+#   geom_point(data = izvoz.SA,
+#              aes(x = Leto, y = Vrednost),
+#              color = 'black') + 
+#   geom_line(data = izvoz.SA, color = 'black') + 
+#   scale_colour_manual('',breaks = c('Irak', 'Savdska Arabija'),
+#                       values = c('green','black')) +
+#   labs(title = 'Izvoz')
 
 #Graf BDP-ja Iraka in Savdske Arabije
 
-graf.BDP.obe <- ggplot(data=BDP.irak, 
-                       aes(x=Leto,
-                           y=BDP, group=1)) +
-  geom_line(color = 'green')+
-  geom_point(color = 'green') +
-  geom_point(data = BDP.SA,
-             aes(x = Leto, y = BDP),
-             color = 'black') + 
-  geom_line(data = BDP.SA, color = 'black') + 
-  scale_colour_manual('',breaks = c('Irak', 'Savdska Arabija'),
-                      values = c('green','black')) +
-  labs(title = 'BDP')
+# graf.BDP.obe <- ggplot(data=BDP.irak, 
+#                        aes(x=Leto,
+#                            y=BDP, group=1)) +
+#   geom_line(color = 'green')+
+#   geom_point(color = 'green') +
+#   geom_point(data = BDP.SA,
+#              aes(x = Leto, y = BDP),
+#              color = 'black') + 
+#   geom_line(data = BDP.SA, color = 'black') + 
+#   scale_colour_manual('',breaks = c('Irak', 'Savdska Arabija'),
+#                       values = c('green','black')) +
+#   labs(title = 'BDP')
 
 #Graf cen
-graf.cen <- ggplot(Cene, aes(Datum, Vrednost)) + 
-  geom_line() + xlab('Cas') + ylab('Cena nafte')
+# graf.cen <- ggplot(Cene, aes(Datum, Vrednost)) + 
+#   geom_line() + xlab('Cas') + ylab('Cena nafte')
 
 #Grafi za valute
-graf.valut.evro <- ggplot(tabela.evro, aes(Datum, Vrednost)) + 
-  geom_line() + xlab('Cas') + ylab('Vrednost evra')
-
-graf.valut.SA <- ggplot(tabela.SA, aes(Datum, Vrednost)) + 
-  geom_line() + xlab('Cas') + ylab('Vrednost SA riala')
-
-graf.vrednosti <- ggplot(data=tabela.evro, 
-                        aes(x=Datum,
-                            y=Vrednost, group=1)) +
-  geom_line(color = 'blue')+
-  geom_line(data = tabela.SA, color = 'red') + 
-  geom_line(data = tabela.dolar, color = 'green') +
-  labs(title = 'Vrednost')
+# graf.valut.evro <- ggplot(tabela.evro, aes(Datum, Vrednost)) + 
+#   geom_line() + xlab('Cas') + ylab('Vrednost evra')
+# 
+# graf.valut.SA <- ggplot(tabela.SA, aes(Datum, Vrednost)) + 
+#   geom_line() + xlab('Cas') + ylab('Vrednost SA riala')
+# 
+# graf.vrednosti <- ggplot(data=tabela.evro, 
+#                         aes(x=Datum,
+#                             y=Vrednost, group=1)) +
+#   geom_line(color = 'blue')+
+#   geom_line(data = tabela.SA, color = 'red') + 
+#   geom_line(data = tabela.dolar, color = 'green') +
+#   labs(title = 'Vrednost')
 
 
 

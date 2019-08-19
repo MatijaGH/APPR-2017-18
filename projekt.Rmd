@@ -9,6 +9,25 @@ output:
     latex_engine: xelatex
 runtime: shiny
 ---
+<style type="text/css">
+h1.title {
+  font-size: 27px;
+  color: Grey;
+}
+h4.author{
+  color:Grey;
+  margin-bottom: 40px;
+}
+h1.naslov{
+  font-size: 50px;
+  margin-bottom: 20px;
+}
+center.slika{
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+</style>
+
 
 ```{r setup, echo=FALSE, results='hide', message=FALSE}
 # Če želimo nastaviti pisave v PDF-ju, odkomentiramo
@@ -19,12 +38,27 @@ runtime: shiny
 source("lib/libraries.r", encoding = "UTF-8")
 ```
 
+<!-- # ```{r rstudio, echo=FALSE, results='asis'} -->
+<!-- # # Izris povezave do RStudia na Binderju -->
+<!-- # source("lib/rstudio.r", encoding="UTF-8") -->
+<!-- # ``` -->
+
+<center> <h1 class="naslov">ANALIZA VPLIVA CENE NAFTE NA IZBRANA GOSPODARSTVA</h1> </center>
+
+<center class="slika">
+
+
+![](slike/Nafta.jpg)
+
+
+</center>
+
 # 1. Izbira teme
 
 Za temo svojega projekta sem se odločil analizirati vpliv cene nafte na izbrana gospodarstva. Za to temo sem se odločil, ker sem velikokrat poslušal o problemih in velikih denarjih, ki se obračajo v naftnih poslih.
 
-![](https://steemitimages.com/p/5s4dzRwnVbzHV6N74jCXgQHYcrjy9ZzoMubgdzr9EzCy8GjmwURrwqmn61jKo6fadekZxWVsARqVUVSWr1BQu92xaYQ4pLm2L7HbSnkJorpg7fzuDPfbvBwhUz7Y3DZfxVXNuThYnLCGK1pUPNKgj6h6nnTeWLxEG2rSmFt?format=match&mode=fit&width=640)
-***
+
+**Cilj:** Predvidevam, da se bo korelacija med BDPjem in ceno nafte v državah, ki se močno zanašajo na izvoz nafte velika.
 
 # Obdelava, uvoz in čiščenje podatkov
 
@@ -34,53 +68,53 @@ source("uvoz/uvoz.r", encoding = "UTF-8")
 
 Uvozil sem podatke o uvozu in izvozu v Excel dokumentu, BDPju in vrednostih valut v obliki CSV, podatke o ceni nafte pa sem pridobil s spletne strani v obliki XML datoteke. Dobljene podatke sem nato uredil v štiri razpredelnice v obliko *tidy data*.
 
-1. `BDP` - podatki o BDP-ju za vsako državo
+
+
+1. **BDP** - podatki o BDP-ju za vsako državo
   - `drzava` - spremenljivka: ime države (neurejen faktor),
   - `leto` - spremenljivka: leto(pove, za katero leto imamo podan BDP),
   - `BDP` - meritev: bruto domači proizvod (število)
   
   ```{r BDP, echo=FALSE, message= FALSE}
-  kable(head(BDP))
+  kable(head(BDP), align = "l")
   ```
+
   
-  
-2. `Cene` - podatki o ceni nafte za vsak dan med 2003 in 2017
+2. **Cene** - podatki o ceni nafte za vsak dan med 2003 in 2017
   - `Datum` - spremenljivka: datum, na katerega se nanaša meritev (neurejen faktor)
   - `Vrednost` - meritev: vrednost nafte v ameriških dolarjih na določen dan (število)
     
   ```{r Cene, echo=FALSE, message= FALSE}
-  kable(head(Cene))
+  kable(head(Cene), align = "l")
   ```
+
   
-  
-3. `uvoz.izvoz` - podatki o uvozu in izvozu nafte za vsako državo
+3. **uvoz.izvoz** - podatki o uvozu in izvozu nafte za vsako državo
   - `drzava` - spremenljivka: ime države (neurejen faktor)
   - `leto` - spremenljivka: leto, na katero se meritev nanaša (neurejen faktor)
   - `vrednost` - meritev: količina izvoza/uvoza, izražena v ameriških dolarjih (število)
   - `tip` - spremenljivka: vrsta transakcije, uvod/izvoz (besedilo)
     
   ```{r uvoz.izvoz, echo=FALSE, message= FALSE}
-  kable(head(uvoz.izvoz))
+  kable(head(uvoz.izvoz), align = "l")
   ```
+
   
-  
-4. `valute` - podatki o vrednostih valut
+4. **Valute** - podatki o vrednostih valut
   - `datum` - spremenljivka: datum, na katerega se nanaša meritev (neurejen faktor)
   - `valuta` - spremenljivka: navede tip valute, ki jo proučujemo (besedilo)
-  - `vrednost` - meritev: pove vrednost valute, izražene v neki povprečni valuti SFR (število)
+  - `vrednost` - meritev: pove vrednost valute, izražene v neki povprečni valuti SDR (število)
   
   ```{r Valute, echo=FALSE, message= FALSE}
-  kable(head(Valute))
+  kable(head(Valute), align = "l")
   ```
-  
-  
 
 
-Spodnji graf prikazuje porazdelitev števila naselij v občinah.
+Spodnji graf prikazuje gibanje cen nafte.
 
-```{r histogram, echo=FALSE, message=FALSE, fig.align='center', fig.cap='Histogram števila naselij v občinah'}
-# ggplot(obcine, aes(x = naselja)) + geom_histogram() +
-#   ggtitle("Pogostost števila naselij") + xlab("Število naselij") + ylab("Število občin")
+```{r plot, echo=FALSE, message=FALSE, fig.align='center', fig.cap='Gibanje cen nafte'}
+ggplot(Cene, aes(Datum, Vrednost)) + 
+  geom_line() + xlab('Cas') + ylab('Cena nafte')
 ```
 
 ***
@@ -91,13 +125,16 @@ Spodnji graf prikazuje porazdelitev števila naselij v občinah.
 source("vizualizacija/vizualizacija.r", encoding = "UTF-8")
 ```
 
-Spodnji zemljevid prikazuje povprečno velikost družine za vsako občino.
+Spodnji zemljevid prikazuje BDP za največje izvoznice nafte leta 2013.
 
-```{r zemljevid, echo=FALSE, fig.align='center', fig.cap='Zemljevid povprečnega števila otrok v družini'}
-# ggplot() + geom_polygon(data = left_join(zemljevid, povprecja, by = c("OB_UIME" = "obcina")),
-#                         aes(x = long, y = lat, group = group, fill = povprecje)) +
-#   ggtitle("Povprečno število otrok v družini") + xlab("") + ylab("") +
-#   guides(fill = guide_colorbar(title = "Povprečje"))
+```{r zemljevid, echo=FALSE, fig.align='center', fig.cap='Zemljevid BDPja v največjih izvoznicah nafte leta 2013'}
+zemljevid <- uvozi.zemljevid("http://www.naturalearthdata.com/http//www.naturalearthdata.com/download/110m/cultural/ne_110m_admin_0_map_units.zip",
+                            "ne_110m_admin_0_map_units", encoding = "UTF-8") %>%
+  pretvori.zemljevid()
+
+zemljevid.BDP <- ggplot() + geom_polygon(data=zemljevid %>% left_join(BDP2013, by=c("SOVEREIGNT"="Drzava")),
+                        aes(x=long, y=lat, group=group, fill=BDP / 1e12)) +
+  guides(fill=guide_colorbar("BDP v milijardah dolarjev"))
 ```
 
 ***
@@ -108,20 +145,19 @@ Spodnji zemljevid prikazuje povprečno velikost družine za vsako občino.
 source("analiza/analiza.r", encoding = "UTF-8")
 ```
 
-Spodnji graf prikazuje povezavo med številom naselij in površino občine.
+Za konec sem v aplikaciji Shiny pripravil še graf gibanja cen,
+točkovni graf gibanja BDPja za izbrane države od leta 2003 naprej,
+zemljevid sveta, ki osvetli države glede na njihov BDP, vrednost
+izbranih valut od leta 2003 naprej in vrednost uvoza ter izvoza
+nafte za obdobje od 2003 naprej za izbrano gospodarstvo.
 
-```{r graf, echo=FALSE, fig.align='center', fig.cap='Povezava med številom naselij in površino občine'}
-# ggplot(inner_join(obcine, data.frame(obcina = names(skupine),
-#                                      skupina = factor(skupine)), by = "obcina")
-# , aes(x = povrsina, y = naselja, color = skupina, size = prebivalci/1000)) + geom_point() +
-#   ggtitle("Število naselij glede na površino občine") +
-#   xlab(expression("Površina (km"^2 * ")")) + ylab("Št. naselij") +
-#   guides(color = guide_legend(title = "Skupina"),
-#          size = guide_legend(title = "Prebivalci (* 1000)"))
-```
 
 ***
 
 ```{r shiny, echo = FALSE}
 shinyAppDir("shiny", options=list(width="100%", height=600))
 ```
+
+# Zaključek
+
+Ugotovil sem, da je pri državah, ki se močno zanašajo na izvoz nafte nihanje cen res močno vplivalo na gibanje BDPja.

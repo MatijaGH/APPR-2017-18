@@ -41,7 +41,7 @@ datumi <- read_excel('podatki/PodatkiOValutah1.xlsx',
   mutate(Date = parse_date(Date,format = '%d-%b-%Y',
                            locale = locale('en')))
 
-valute <- read_excel('podatki/PodatkiOValutah1.xlsx', range = 'A3:I3811',
+Valute <- read_excel('podatki/PodatkiOValutah1.xlsx', range = 'A3:I3811',
                      col_types = c('date',rep('numeric',8))) %>%
   rename(Datum = Date) %>%
   #mutate(Datum = if_else(is.na(Datum),datumi$Date, parse_date(Datum))) %>%
