@@ -57,15 +57,18 @@ uvoz.obe <- uvoz %>% filter(Drzava == 'China' | Drzava == 'United States')
 #Tabeli izvoza Iraka in Savdske Arabije
 
 izvoz.irak <- izvoz %>% filter(Drzava == 'Iraq')
-izvoz.SA <- izvoz %>% filter(Drzava == 'Saudi Arabia')
+izvoz.arabci <- izvoz %>% filter(Drzava == 'Arab World')
 
 #Tabeli BDP-ja Iraka in Savdske Arabije
 BDP.irak <- tail(BDP.irak <- BDP %>% filter(Drzava == 'Iraq'),15)
 BDP.SA <- tail(BDP.SA <- BDP %>% filter(Drzava == 'Saudi Arabia'),15)
+BDP.indija <- tail(BDP.indija <- BDP %>% filter(Drzava =='India'),15)
+
 
 #Tabela za valute
 tabela.evro <- valute %>% filter(Valuta == 'euro   (EUR)')
 tabela.SA <- valute %>% filter(Valuta == 'Saudi Arabian riyal   (SAR)')
 tabela.dolar <- valute %>% filter(Valuta == 'U.S. dollar   (USD)')
+tabela.kuvajt <- valute %>% filter(Valuta == 'Kuwaiti dinar   (KWD)')
 
 

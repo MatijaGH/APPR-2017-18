@@ -36,7 +36,7 @@ shinyUI(fluidPage(
     tabPanel('Vrednost valut',
              sidebarPanel(
                radioButtons('Valuta', label = 'Izberi valuto',
-                            choices = unique(Valute$Valuta))
+                            choices = unique(valute$Valuta))
              ),
              mainPanel(plotOutput('graf.valuta'))),
     tabPanel('Uvoz in izvoz',

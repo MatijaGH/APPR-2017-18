@@ -127,17 +127,40 @@ source("vizualizacija/vizualizacija.r", encoding = "UTF-8")
 
 Spodnji zemljevid prikazuje BDP za največje izvoznice nafte leta 2013.
 
-```{r zemljevid, echo=FALSE, results = 'hide', fig.align='center', fig.cap='Zemljevid BDPja v največjih izvoznicah nafte leta 2013'}
-zemljevid <- uvozi.zemljevid("http://www.naturalearthdata.com/http//www.naturalearthdata.com/download/110m/cultural/ne_110m_admin_0_map_units.zip",
-                            "ne_110m_admin_0_map_units", encoding = "UTF-8") %>%
-  pretvori.zemljevid()
-
-zemljevid.BDP <- ggplot() + geom_polygon(data=zemljevid %>% left_join(BDP2013, by=c("SOVEREIGNT"="Drzava")),
-                        aes(x=long, y=lat, group=group, fill=BDP / 1e12)) +
-  guides(fill=guide_colorbar("BDP v milijardah dolarjev"))
-```
+# ```{r zemljevid, echo=FALSE, results = 'hide', fig.align='center', fig.cap='Zemljevid BDPja v največjih izvoznicah nafte leta 2013'}
+# zemljevid <- uvozi.zemljevid("http://www.naturalearthdata.com/http//www.naturalearthdata.com/download/110m/cultural/ne_110m_admin_0_map_units.zip",
+#                             "ne_110m_admin_0_map_units", encoding = "UTF-8") %>%
+#   fortify()
+# 
+# zemljevid.BDP <- ggplot() + geom_polygon(data=zemljevid %>% left_join(BDP2013, by=c("SOVEREIGNT"="Drzava")),
+#                         aes(x=long, y=lat, group=group, fill=BDP / 1e12)) +
+#   guides(fill=guide_colorbar("BDP v milijardah dolarjev"))
+# ```
 
 ***
+Na spodnji sliki vidimo, kako so se od 2003 do 2017 gibale vrednosti kuvajtskega dolarja, evra, ameriškega dolarja in savdskega riala v primerjavi z SDR(standard drawing rights), nekakšnim uteženim povprečjem vseh svetovnih valut.
+
+```{r graf.vrednosti, echo=FALSE, warning = FALSE, fig.align='center', fig.cap='Gibanje vrednosti evra, dolarja in riala v primerjavi s SDR'}
+
+
+print(primerjava.cena.BDP)
+```
+
+Poglejmo si še graf, kako so se gibali BDPji držav, ki so zelo odvisne od izvoza nafte, vzeli bomo Irak in Savdsko Arabijo, ter njuna BDPja primerjali z BDPjem Indije, ki nikakor ni odvisna od izvoza nafte. Očitno je, da je padec cene nafte med letoma 2008-09 močno prizadel državi izvoznici, Indije pa ne, enak pojav je opaziti med letoma 2014-15. To dejstvo je lahko razložiti, izvoz nafte namreč predstavlja skoraj polovico BDPja Iraka in Savdske Arabije.
+
+```{r graf.BDP, echo=FALSE, warning = FALSE, fig.align='center', fig.cap='Gibanje BDPja Indije, Savdske Arabije in Iraka'}
+
+
+print(graf.BDP.vse)
+```
+
+Analizirajmo vpliv cene nafte na izvoz izbranih gospodarstev. Pogledali bomo Irak in povprečje Arabskega sveta. Nihanje cen je bolj vplivalo na povprečje Arabskega sveta, Irak pa je vseskozi ohranjal visoko raven izvoza, čeprav ni imun na spremembe cen, kar nakazujeta padec v vrednosti izvoza med letoma 2008-9. Arabski svet pa je precej volatilen in se giblje dokaj pozitivno korelirano s ceno nafte.
+
+```{r graf.izvoz, echo=FALSE, warning = FALSE, fig.align='center', fig.cap='Gibanje vrednosti izvoza Iraka in Arabskega sveta'}
+
+
+print(graf.izvoz.obe)
+```
 
 # Napredna analiza podatkov
 
@@ -160,4 +183,4 @@ shinyAppDir("shiny", options=list(width="100%", height=600))
 
 # Zaključek
 
-Ugotovil sem, da je pri državah, ki se močno zanašajo na izvoz nafte nihanje cen res močno vplivalo na gibanje BDPja.
+Ugotovil sem, da je pri državah, ki se močno zanašajo na izvoz nafte nihanje cen res močno vplivalo na gibanje BDPja in vrednost izvoza.

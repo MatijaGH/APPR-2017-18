@@ -48,7 +48,7 @@ server <- function(input, output) {
   output$BDPsvet <- renderPlot({
     zemljevid <- uvozi.zemljevid("http://www.naturalearthdata.com/http//www.naturalearthdata.com/download/110m/cultural/ne_110m_admin_0_map_units.zip",
                                  "ne_110m_admin_0_map_units", encoding = "UTF-8") %>%
-      pretvori.zemljevid()
+      fortify()
     
     zemljevid.BDP <- ggplot() + geom_polygon(data=zemljevid %>% left_join(BDP %>% filter(Leto == input$Leto), by=c("SOVEREIGNT"="Drzava")),
                                              aes(x=long, y=lat, group=group, fill=BDP / 1e12)) +
