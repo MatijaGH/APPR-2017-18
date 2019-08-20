@@ -17,6 +17,9 @@ library(DT)
 library(rmarkdown)
 library(digest)
 library(extrafont)
+library(mosaic)
+library(rgdal)
+
 
 #uvoz funkcij za zemljevid
 source("lib/uvozi.zemljevid.r")

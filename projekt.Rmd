@@ -62,7 +62,7 @@ Za temo svojega projekta sem se odločil analizirati vpliv cene nafte na izbrana
 
 # Obdelava, uvoz in čiščenje podatkov
 
-```{r uvoz, echo=FALSE, message=FALSE}
+```{r uvoz, echo=FALSE, message=FALSE, warning=FALSE}
 source("uvoz/uvoz.r", encoding = "UTF-8")
 ```
 
@@ -105,8 +105,8 @@ Uvozil sem podatke o uvozu in izvozu v Excel dokumentu, BDPju in vrednostih valu
   - `valuta` - spremenljivka: navede tip valute, ki jo proučujemo (besedilo)
   - `vrednost` - meritev: pove vrednost valute, izražene v neki povprečni valuti SDR (število)
   
-  ```{r Valute, echo=FALSE, message= FALSE}
-  kable(head(Valute), align = "l")
+  ```{r valute, echo=FALSE, message= FALSE}
+  kable(head(valute), align = "l")
   ```
 
 
@@ -127,7 +127,7 @@ source("vizualizacija/vizualizacija.r", encoding = "UTF-8")
 
 Spodnji zemljevid prikazuje BDP za največje izvoznice nafte leta 2013.
 
-```{r zemljevid, echo=FALSE, fig.align='center', fig.cap='Zemljevid BDPja v največjih izvoznicah nafte leta 2013'}
+```{r zemljevid, echo=FALSE, results = 'hide', fig.align='center', fig.cap='Zemljevid BDPja v največjih izvoznicah nafte leta 2013'}
 zemljevid <- uvozi.zemljevid("http://www.naturalearthdata.com/http//www.naturalearthdata.com/download/110m/cultural/ne_110m_admin_0_map_units.zip",
                             "ne_110m_admin_0_map_units", encoding = "UTF-8") %>%
   pretvori.zemljevid()

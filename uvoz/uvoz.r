@@ -41,14 +41,14 @@ datumi <- read_excel('podatki/PodatkiOValutah1.xlsx',
   mutate(Date = parse_date(Date,format = '%d-%b-%Y',
                            locale = locale('en')))
 
-Valute <- read_excel('podatki/PodatkiOValutah1.xlsx', range = 'A3:I3811',
+valute <- read_excel('podatki/PodatkiOValutah1.xlsx', range = 'A3:I3811',
                      col_types = c('date',rep('numeric',8))) %>%
   rename(Datum = Date) %>%
   #mutate(Datum = if_else(is.na(Datum),datumi$Date, parse_date(Datum))) %>%
   melt(id.vars = 'Datum', variable.name = 'Valuta', value.name = 'Vrednost')
 
 
-#Za analize naredim še tabeli uvoza Kitajske in ZDA
+#Za analize naredim se tabeli uvoza Kitajske in ZDA
 
 uvoz.kitajska <- uvoz %>% filter(Drzava == 'China')
 uvoz.ZDA <- uvoz %>% filter(Drzava == 'United States')
@@ -67,3 +67,5 @@ BDP.SA <- tail(BDP.SA <- BDP %>% filter(Drzava == 'Saudi Arabia'),15)
 tabela.evro <- valute %>% filter(Valuta == 'euro   (EUR)')
 tabela.SA <- valute %>% filter(Valuta == 'Saudi Arabian riyal   (SAR)')
 tabela.dolar <- valute %>% filter(Valuta == 'U.S. dollar   (USD)')
+
+

@@ -4,9 +4,9 @@ Avtor: Matija Gubanec Hančič
 
 Repozitorij z gradivi pri predmetu APPR v študijskem letu 2017/18
 
-* [![Shiny](https://mybinder.org/badge_logo.svg)](https://hub.gke.mybinder.org/user/matijagh-appr-2017-18-ut9od9l5/edit/projekt.Rmd) Shiny
+* [![Shiny](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/MatijaGH/APPR-2017-18/master?urlpath=shiny/APPR-2017-18/projekt.Rmd) Shiny
 
-* [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/MatijaGH/APPR-2017-18.git/master) Binder
+* [![RStudio](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/MatijaGH/APPR-2017-18/master?urlpath=rstudio) RStudio
 
 ## Tematika
 

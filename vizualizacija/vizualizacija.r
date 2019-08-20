@@ -20,15 +20,15 @@ ggplot(uvoz2013, aes(dist, delay)) +
 
 #Graf uvoza za ZDA in Kitajsko
 
-# graf.uvoz.obe <- ggplot(data=uvoz.ZDA, 
+# graf.uvoz.obe <- ggplot(data=uvoz.ZDA,
 #                         aes(x=Leto,
 #                             y=Vrednost, group=1)) +
 #   geom_line(color = 'blue')+
 #   geom_point(color = 'blue') +
 #   geom_point(data = uvoz.kitajska,
 #              aes(x = Leto, y = Vrednost),
-#              color = 'red') + 
-#   geom_line(data = uvoz.kitajska, color = 'red') + 
+#              color = 'red') +
+#   geom_line(data = uvoz.kitajska, color = 'red') +
 #   scale_colour_manual('',breaks = c('ZDA', 'Kitajska'),
 #                       values = c('blue','red')) +
 #   labs(title = 'Uvoz')
@@ -100,10 +100,11 @@ ggplot(uvoz2013, aes(dist, delay)) +
 #povprecja <- druzine %>% group_by(obcina) %>%
 #  summarise(povprecje = sum(velikost.druzine * stevilo.druzin) / sum(stevilo.druzin))
 
+
 #uvozimo zemljevid sveta
 zemljevid <- uvozi.zemljevid("http://www.naturalearthdata.com/http//www.naturalearthdata.com/download/110m/cultural/ne_110m_admin_0_map_units.zip",
                             "ne_110m_admin_0_map_units", encoding = "UTF-8") %>%
-  pretvori.zemljevid()
+  fortify()
 
 zemljevid.BDP <- ggplot() + geom_polygon(data=zemljevid %>% left_join(BDP2013, by=c("SOVEREIGNT"="Drzava")),
                         aes(x=long, y=lat, group=group, fill=BDP / 1e12)) +
