@@ -61,8 +61,12 @@ izvoz.arabci <- izvoz %>% filter(Drzava == 'Arab World')
 
 #Tabeli BDP-ja Iraka in Savdske Arabije
 BDP.irak <- tail(BDP.irak <- BDP %>% filter(Drzava == 'Iraq'),15)
+BDP.irak$BDP <-  BDP.irak$BDP / 1000000000
 BDP.SA <- tail(BDP.SA <- BDP %>% filter(Drzava == 'Saudi Arabia'),15)
+BDP.SA$BDP <- BDP.SA$BDP / 1000000000
 BDP.indija <- tail(BDP.indija <- BDP %>% filter(Drzava =='India'),15)
+BDP.indija$BDP <- BDP.indija$BDP / 1000000000
+
 
 
 #Tabela za valute

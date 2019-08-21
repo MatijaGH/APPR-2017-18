@@ -99,11 +99,29 @@ Za zagon tega vzorca je potrebno namestiti sledeče pakete za R:
 * `gsubfn` - za delo z nizi (čiščenje podatkov)
 * `ggplot2` - za izrisovanje grafov
 * `extrafont` - za pravilen prikaz šumnikov (neobvezno)
-* `tidyr`
-* `tidyverse`
-* `readxl`
-* `XML`
-* `maptools`
-* `fpp2`
+
+## Binder
+
+Zgornje [povezave](#analiza-podatkov-s-programom-r-201819)
+omogočajo poganjanje projekta na spletu z orodjem [Binder](https://mybinder.org/).
+V ta namen je bila pripravljena slika za [Docker](https://www.docker.com/),
+ki vsebuje večino paketov, ki jih boste potrebovali za svoj projekt.
+
+Če se izkaže, da katerega od paketov, ki ji potrebujete, ni v sliki,
+lahko za sprotno namestitev poskrbite tako,
+da jih v datoteki [`install.R`](install.R) namestite z ukazom `install.packages`.
+Te datoteke (ali ukaza `install.packages`) **ne vključujte** v svoj program -
+gre samo za navodilo za Binder, katere pakete naj namesti pred poganjanjem vašega projekta.
+
+Tako nameščanje paketov se bo izvedlo pred vsakim poganjanjem v Binderju.
+Če se izkaže, da je to preveč zamudno,
+lahko pripravite [lastno sliko](https://github.com/jaanos/APPR-docker) z želenimi paketi.
+
+Če želite v Binderju delati z git,
+v datoteki `gitconfig` nastavite svoje ime in priimek ter e-poštni naslov
+(odkomentirajte vzorec in zamenjajte s svojimi podatki) -
+ob naslednjem.zagonu bo mogoče delati commite.
+Te podatke lahko nastavite tudi z `git config --global` v konzoli
+(vendar bodo veljale le v trenutni seji).
 
 

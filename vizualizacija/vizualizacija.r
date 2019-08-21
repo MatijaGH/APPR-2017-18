@@ -39,7 +39,7 @@ graf.izvoz.obe <- ggplot(data=izvoz.irak,
   geom_line(data = izvoz.arabci, color = 'black') +
   scale_colour_manual('',breaks = c('Irak', 'Arabski svet'),
                       values = c('green','black')) +
-  labs(title = 'Izvoz')
+  labs(title = 'Izvoz') + ylab('Izvoz v milijardah dolarjev')
 
 #Graf BDP-ja Indije, Iraka in Savdske Arabije
 
@@ -56,7 +56,7 @@ graf.BDP.vse <- ggplot(data=BDP.irak,
   geom_line(data = BDP.indija, color = 'red') +
   scale_colour_manual('',breaks = c('Irak', 'Savdska Arabija'),
                       values = c('green','black')) +
-  labs(title = 'BDP')
+  labs(title = 'BDP') + ylab('BDP v milijardah dolarjev')
 
 #Graf cen
 graf.cen <- ggplot(Cene, aes(Datum, Vrednost)) +
@@ -79,7 +79,6 @@ primerjava.cena.BDP <- ggplot(data=tabela.kuvajt,
         panel.background=element_rect(fill="#F5ECCE"), plot.title = element_text(size = (15)))
 
 
-
 # Uvozimo zemljevid.
 #zemljevid <- uvozi.zemljevid("http://baza.fmf.uni-lj.si/OB.zip",
 #                             "OB/OB", encoding = "Windows-1250")
@@ -96,17 +95,13 @@ primerjava.cena.BDP <- ggplot(data=tabela.kuvajt,
 
 #uvozimo zemljevid sveta
 
-# zemljevid <- uvozi.zemljevid("http://www.naturalearthdata.com/http//www.naturalearthdata.com/download/110m/cultural/ne_110m_admin_0_map_units.zip",
-#                             "ne_110m_admin_0_map_units", encoding = "UTF-8") %>%
-#   fortify()
-# 
-# zemljevid.BDP <- ggplot() + geom_polygon(data=zemljevid %>% left_join(BDP2013, by=c("SOVEREIGNT"="Drzava")),
-#                         aes(x=long, y=lat, group=group, fill=BDP / 1e12)) +
-#   guides(fill=guide_colorbar("BDP v milijardah dolarjev"))
+zemljevid <- uvozi.zemljevid("http://www.naturalearthdata.com/http//www.naturalearthdata.com/download/110m/cultural/ne_110m_admin_0_map_units.zip",
+                             "ne_110m_admin_0_map_units", encoding = "UTF-8") %>%
+  fortify()
 
+zemljevid.BDP <- ggplot() + geom_polygon(data=zemljevid %>% left_join(BDP %>% filter(Leto == '2013'), by=c("SOVEREIGNT"="Drzava")),
+                                         aes(x=long, y=lat, group=group, fill=BDP / 1e12)) +
+  guides(fill=guide_colorbar("BDP v bilijonih dolarjev"))
 
-
-
-
-
+print(zemljevid.BDP)
 

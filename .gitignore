@@ -17,7 +17,6 @@ __pycache__
 *.lot
 *.out
 *.pdf
-*.png
 *.prj
 *.pyc
 *.sbn

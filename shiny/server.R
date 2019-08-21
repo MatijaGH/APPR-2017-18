@@ -32,9 +32,11 @@ server <- function(input, output) {
   
   output$graf.BDP <- renderPlot({
     BDP1 <- tail(BDP.drzava <- BDP %>% filter(Drzava == input$Drzava),15)
+    BDP1$BDP <- BDP1$BDP / 1000000000
     graf1 <- ggplot(data = BDP1, aes(x = Leto, y = BDP)) +
                       geom_line(color = 'green') +
-                      geom_point(color = 'green', size = 3)
+                      geom_point(color = 'green', size = 3) +
+      ylab('BDP v milijardah dolarjev')
     print(graf1)
   })
   

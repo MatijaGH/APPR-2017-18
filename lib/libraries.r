@@ -19,6 +19,7 @@ library(digest)
 library(extrafont)
 library(mosaic)
 library(rgdal)
+library(rgeos)
 
 
 #uvoz funkcij za zemljevid
