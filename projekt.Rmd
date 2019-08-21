@@ -134,7 +134,7 @@ Zgornji zemljevid prikazuje BDP izbranih držav za leto 2013.
 <!-- # ``` -->
 
 ***
-Na spodnji sliki vidimo, kako so se od 2003 do 2017 gibale vrednosti kuvajtskega dolarja, evra, ameriškega dolarja in savdskega riala v primerjavi z SDR(standard drawing rights), nekakšnim uteženim povprečjem vseh svetovnih valut.
+Na spodnji sliki vidimo, kako so se od 2003 do 2017 gibale vrednosti kuvajtskega dolarja, evra, ameriškega dolarja in savdskega riala v primerjavi z SDR(standard drawing rights), nekakšnim uteženim povprečjem vseh svetovnih valut. Ob prihodu krize leta 2008 je opazen padec kuvajtskega dolarja in evra, manj pa ameriškega dolarja in savdskega riala, kar pomeni, da sta se v primerjavi z valuto SDR bolje držala rial in ameriški dolar.
 
 ```{r graf.vrednosti, echo=FALSE, warning = FALSE, fig.align='center', fig.cap='Gibanje vrednosti evra, dolarja in riala v primerjavi s SDR'}
 
@@ -142,7 +142,7 @@ Na spodnji sliki vidimo, kako so se od 2003 do 2017 gibale vrednosti kuvajtskega
 print(primerjava.cena.BDP)
 ```
 
-Poglejmo si še graf, kako so se gibali BDPji držav, ki so zelo odvisne od izvoza nafte, vzeli bomo Irak in Savdsko Arabijo, ter njuna BDPja primerjali z BDPjem Indije, ki nikakor ni odvisna od izvoza nafte. Očitno je, da je padec cene nafte med letoma 2008-09 močno prizadel državi izvoznici, Indije pa ne, enak pojav je opaziti med letoma 2014-15. To dejstvo je lahko razložiti, izvoz nafte namreč predstavlja skoraj polovico BDPja Iraka in Savdske Arabije.
+Poglejmo si še graf, kako so se gibali BDPji držav, ki so zelo odvisne od izvoza nafte, vzeli bomo Irak in Savdsko Arabijo, ter njuna BDPja primerjali z BDPjem Indije, ki nikakor ni odvisna od izvoza nafte. Očitno je, da je padec cene nafte med letoma 2008-09 močno prizadel državi izvoznici, Indije pa ne, enak pojav je opaziti med letoma 2014-15. To dejstvo lahko razložimo, izvoz nafte namreč predstavlja skoraj polovico BDPja Iraka in Savdske Arabije.
 
 ```{r graf.BDP, echo=FALSE, warning = FALSE, fig.align='center', fig.cap='Gibanje BDPja Indije, Savdske Arabije in Iraka'}
 
@@ -150,7 +150,7 @@ Poglejmo si še graf, kako so se gibali BDPji držav, ki so zelo odvisne od izvo
 print(graf.BDP.vse)
 ```
 
-Analizirajmo vpliv cene nafte na izvoz izbranih gospodarstev. Pogledali bomo Irak in povprečje Arabskega sveta. Nihanje cen je bolj vplivalo na povprečje Arabskega sveta, Irak pa je vseskozi ohranjal visoko raven izvoza, čeprav ni imun na spremembe cen, kar nakazujeta padec v vrednosti izvoza med letoma 2008-9. Arabski svet pa je precej volatilen in se giblje dokaj pozitivno korelirano s ceno nafte.
+Analizirajmo vpliv cene nafte na izvoz izbranih gospodarstev. Poglejmo si Irak in povprečje Arabskega sveta. Nihanje cen je bolj vplivalo na povprečje Arabskega sveta, Irak pa je vseskozi ohranjal visoko raven izvoza, čeprav ni imun na spremembe cen, kar nakazujeta padec v vrednosti izvoza med letoma 2008-9. Arabski svet pa je precej volatilen in se giblje dokaj pozitivno korelirano s ceno nafte.
 
 ```{r graf.izvoz, echo=FALSE, warning = FALSE, fig.align='center', fig.cap='Gibanje vrednosti izvoza Iraka in Arabskega sveta'}
 
@@ -159,6 +159,8 @@ print(graf.izvoz.obe)
 ```
 
 # Napredna analiza podatkov
+
+V tej fazi bomo z modeliranje mnad podatki poskusili napovedati prihodnost in izvleči kakšno zanimivo spoznanje.
 
 Prva metoda, ki sem jo uporabil, zgladi časovno vrsto in dobljeno krivuljo nato uporablja za napovedovanje prihodnjih cen. Prva to stori z drsečim povprečjem, druga pa krivuljo zgladi eksponentno. S podatki zadnjih 8 dni nato napove ceno za naslednji dan. 
 Prva metoda je za jutrišnji dan napovedala ceno 58.8, druga pa 59.49 dolarja.

@@ -105,3 +105,9 @@ zemljevid.BDP <- ggplot() + geom_polygon(data=zemljevid %>% left_join(BDP %>% fi
 
 print(zemljevid.BDP)
 
+#Še zemljevid izvoza nafte
+# zemljevid.izvoz <- ggplot() + geom_polygon(data=zemljevid %>% left_join(izvoz %>% filter(Leto == '2013'), by=c("SOVEREIGNT"="Drzava")),
+#                                          aes(x=long, y=lat, group=group, fill=Vrednost)) +
+#   guides(fill=guide_colorbar("Izvoz v milijardah dolarjev"))
+# 
+# print(zemljevid.izvoz)
